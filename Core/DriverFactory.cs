@@ -15,6 +15,8 @@ namespace SauceDemo.Core
             var chromeOptions = new ChromeOptions();
             chromeOptions.AddArgument("--incognito");
             chromeOptions.AddArgument("--remote-debugging-pipe");
+            chromeOptions.AddArgument("--headless");
+            chromeOptions.AddArgument("disable-extensions");
 
             new DriverManager().SetUpDriver(new ChromeConfig(),VersionResolveStrategy.MatchingBrowser);
 
