@@ -39,4 +39,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include=".github\workflows\dotnet-selenium.yml" />
+  </ItemGroup>
+
 </Project>
