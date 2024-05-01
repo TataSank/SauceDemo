@@ -1,14 +1,24 @@
-﻿using OpenQA.Selenium;
+﻿using Allure.Net.Commons;
+using Allure.NUnit.Attributes;
+using OpenQA.Selenium;
 using SauceDemo.Helper;
 using SauceDemo.Pages;
 
 
 namespace SauceDemo.Tests
 {
-    public class LoginTest : BaseTest
+        public class LoginTest : BaseTest
     {
+        [SetUp]
+        public void Setup()
+        {
+            Driver.Navigate().GoToUrl(Configurator.ReadConfiguration().Url);
+        }
 
         [Test]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureTag("Smoke Test", "Login")]
+        [AllureDescription("This test checks positive and negative cases for logining")]
         public void LoginPositiveTest()
 
         {
