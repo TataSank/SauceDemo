@@ -31,7 +31,6 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
-    # Execute all unit tests in the solution/
     - name: Execute Selenium tests
       run: dotnet test
      
