@@ -12,13 +12,13 @@ jobs:
       matrix:
         configuration: [Debug]
 
-    runs-on: ubuntu-latest 
-                       
+    runs-on: ubuntu-latest                                      #for allure
+    
     env:
       Solution_Name: your-solution-name                         # Replace with your solution name, i.e. MyWpfApp.sln.
       Test_Project_Path: your-test-project-path                 # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
       Wap_Project_Directory: your-wap-project-directory-name    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
-      Wap_Project_Path: your-wap-project-path                   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
+      Wap_Project_Path: your-wap-project-path                   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.    
 
     steps:
     - name: Checkout
@@ -31,7 +31,6 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
-    # Execute all unit tests in the solution
     - name: Execute Selenium tests
       run: dotnet test
      
@@ -49,7 +48,7 @@ jobs:
       with:
           gh_pages: gh-pages
           allure_history: allure-history
-          allure_results: SauceDemo/SauceDemo/bin/Debug/net8.0/allure-results
+          allure_results: ./bin/Debug/net8.0/allure-results
 
     - name: Publish test report
       uses: peaceiris/actions-gh-pages@v3
@@ -58,4 +57,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
-  
