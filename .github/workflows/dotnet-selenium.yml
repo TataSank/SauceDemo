@@ -33,6 +33,7 @@ jobs:
       run: dotnet test
 
     - name: Show list of files
+      if: always()
       run: ls -R
      
     - name: Load test report history
@@ -49,7 +50,7 @@ jobs:
       with:
           gh_pages: gh-pages
           allure_history: allure-history
-          allure_results: /home/runner/work/SauceDemo/SauceDemo/bin/Debug/net8.0/allure-results
+          allure_results: SauceDemo/SauceDemo/SauceDemo/bin/Debug/net8.0/allure-results
 
     - name: Publish test report
       uses: peaceiris/actions-gh-pages@v3
