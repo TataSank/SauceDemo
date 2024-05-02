@@ -1,7 +1,5 @@
 ﻿using OpenQA.Selenium;
 
-
-
 namespace SauceDemo.Pages
 {
     internal class ProductsPage : BasePage

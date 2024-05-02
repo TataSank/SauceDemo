@@ -1,8 +1,10 @@
-﻿using OpenQA.Selenium;
+﻿using AngleSharp.Dom;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
+using WebDriverManager.Helpers;
 
 namespace SauceDemo.Core
 {
@@ -12,8 +14,11 @@ namespace SauceDemo.Core
         {
             var chromeOptions = new ChromeOptions();
             chromeOptions.AddArgument("--incognito");
+            chromeOptions.AddArgument("--remote-debugging-pipe");
+            chromeOptions.AddArgument("--headless");
+            chromeOptions.AddArgument("disable-extensions");
 
-            new DriverManager().SetUpDriver(new ChromeConfig());
+            new DriverManager().SetUpDriver(new ChromeConfig(),VersionResolveStrategy.MatchingBrowser);
 
             return new ChromeDriver(chromeOptions);
         }

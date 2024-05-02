@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using SauceDemo.Helper;
+using WebDriverManager.Helpers;
 
 namespace SauceDemo.Core
 {
@@ -13,11 +14,12 @@ namespace SauceDemo.Core
             {
                 "chrome" => new DriverFactory().GetChromeDriver(),
                 "firefox" => new DriverFactory().GetFirefoxDriver(),
-                _=> throw new Exception("This browser is not supported")
-            };
-
+                _ => throw new Exception("This browser is not supported")
+             };
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Configurator.ReadConfiguration().TimeOut);
             Driver.Manage().Window.Maximize();
         }
     }
 }
+   
+
